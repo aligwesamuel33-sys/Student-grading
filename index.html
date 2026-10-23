@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Student Grade Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Department of Computer Science · Results Dashboard</p>
+      <h1>Student Grade Calculator</h1>
+      <p class="sub">Enter five course scores to get the total, average and grade. Compare students and courses.</p>
+    </div>
+  </header>
+
+  <main class="wrap layout">
+    <section class="card" aria-labelledby="form-h">
+      <h2 id="form-h">Add a student</h2>
+      <form id="gradeForm" novalidate>
+        <div class="field">
+          <label for="studentName">Student name</label>
+          <input id="studentName" type="text" autocomplete="off" placeholder="e.g. Efion Ekanem">
+          <span class="error" id="studentName-error"></span>
+        </div>
+        <div class="scores">
+          <div class="field">
+            <label for="score0">Programming</label>
+            <input id="score0" type="text" inputmode="decimal" placeholder="0–100">
+            <span class="error" id="score0-error"></span>
+          </div>
+          <div class="field">
+            <label for="score1">Database Systems</label>
+            <input id="score1" type="text" inputmode="decimal" placeholder="0–100">
+            <span class="error" id="score1-error"></span>
+          </div>
+          <div class="field">
+            <label for="score2">Computer Networks</label>
+            <input id="score2" type="text" inputmode="decimal" placeholder="0–100">
+            <span class="error" id="score2-error"></span>
+          </div>
+          <div class="field">
+            <label for="score3">Mathematics</label>
+            <input id="score3" type="text" inputmode="decimal" placeholder="0–100">
+            <span class="error" id="score3-error"></span>
+          </div>
+          <div class="field">
+            <label for="score4">Software Engineering</label>
+            <input id="score4" type="text" inputmode="decimal" placeholder="0–100">
+            <span class="error" id="score4-error"></span>
+          </div>
+        </div>
+        <button type="submit" class="btn primary">Calculate &amp; add student</button>
+      </form>
+      <div id="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <aside class="side">
+      <div class="card">
+        <h2>Sample data</h2>
+        <p class="hint">Demo students are fictional and marked <span class="badge demo">Demo</span>.</p>
+        <button type="button" id="loadDemo" class="btn secondary">Load sample students</button>
+        <button type="button" id="clearAll" class="btn ghost">Clear all records</button>
+      </div>
+      <div class="card top">
+        <h2>Highest-scoring student</h2>
+        <div id="topStudent" class="summary-body"></div>
+      </div>
+    </aside>
+
+    <section class="card wide" aria-labelledby="avg-h">
+      <h2 id="avg-h">Subject averages</h2>
+      <div id="subjectSummary" class="summary-body"></div>
+      <div id="subjectAverages" class="avg-grid"></div>
+    </section>
+
+    <section class="card wide" aria-labelledby="res-h">
+      <h2 id="res-h">Results <span id="studentCount" class="count-pill">0 students</span></h2>
+      <div id="emptyState" class="empty">
+        <p><strong>No student records yet.</strong></p>
+        <p>Add a student with the form, or load the sample students.</p>
+      </div>
+      <div class="table-wrap">
+        <table id="resultsTable" hidden>
+          <thead>
+            <tr>
+              <th>#</th><th>Name</th><th>Programming</th><th>Database Systems</th><th>Computer Networks</th>
+              <th>Mathematics</th><th>Software Engineering</th><th>Total /500</th><th>Average</th><th>Grade</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Grading scale: A 70–100 · B 60–69.99 · C 50–59.99 · D 45–49.99 · E 40–44.99 · F below 40</footer>
+  <script src="script.js"></script>
+</body>
+</html>
